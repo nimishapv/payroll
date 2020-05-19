@@ -1,18 +1,28 @@
 package pageObject;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
+
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CreateTimeSheet {
 	WebDriver driver;
 	
-	@FindBy(linkText="payrollapp/timesheet/create")
+	@FindBy(xpath="//a[@href=\"/payrollapp/timesheet/create\"]")
 	WebElement create;
-	@FindBy(className="btn btn-success")
+	@FindBy(xpath="//button[@class=\"btn btn-success\"]")
 	WebElement skip;
 	@FindBy(xpath="//select[@name=\"Timesheet[branch_id]\"]")
 	WebElement branch;
@@ -22,24 +32,33 @@ public class CreateTimeSheet {
 	WebElement description;
 	@FindBy(name="Timesheet[timesheet_number]")
 	WebElement number;
-	@FindBy(xpath="//select[@name=\"Timesheet[client_id]\"]")
-	WebElement client;
+	
+	@FindBy(xpath="//*[@id=\"dynamic-form\"]/div/div[2]/div[1]/span/span[1]/span/span[2]")
+    WebElement client;
+	@FindBy(xpath="//input[@class=\"select2-search__field\"]")
+	WebElement clientInput;
+	//@FindBy(xpath="//ul[@class=\"select2-results__options\"]//li")
+	//WebElement clientOption;
+	
+	
 	@FindBy(xpath="//input[@name=\"Timesheet[date]\"]")
 	WebElement date;
 	@FindBy(xpath="//div[@class=\"datepicker-days\"]//tr[2]//td[7]")
 	WebElement weekendDate;
 	@FindBy(xpath="//select[@name=\"Timesheet[category]\"]")
 	WebElement category;
-	@FindBy(name="Timesheet[direct_client]")
+	@FindBy(xpath="//input[@id=\"timesheet-direct_client\"]")
 	WebElement checkbox1;
-	@FindBy(xpath="//span[@id=\"select2-timesheet-worker_id-container\"]")
+	
+	@FindBy(xpath="//*[@id=\"dynamic-form\"]/div/div[3]/div[1]/span/span[1]/span/span[2]")
 	WebElement worker;
+	
 	@FindBy(xpath="//select[@name=\"Timesheet[employment_type]\"]")
 	WebElement type;
 	@FindBy(name="Timesheet[po_number]")
 	WebElement PO;
-	@FindBy(xpath="//button[@class=\"pull-right add-item btn btn-success btn-xs\"]")
-	WebElement rate;
+	//@FindBy(xpath="//button[@class=\"pull-right add-item btn btn-success btn-xs\"]")
+	//WebElement rate;
 	@FindBy(xpath="//select[@name=\"Rate[0][type_id]\"]")
 	WebElement rate_desc;
 	@FindBy(name="Rate[0][frequency]")
@@ -50,9 +69,9 @@ public class CreateTimeSheet {
 	WebElement pay;
 	@FindBy(name="Rate[0][bill]")
 	WebElement bill;
-	@FindBy(xpath="//div[@class=\"form-group field-rate-0-awr has-success\"]")
+	@FindBy(xpath="//input[@id=\"rate-0-awr\"]")
 	WebElement awr;
-	@FindBy(xpath="//button[@class=\"pull-right add-item1 btn btn-success btn-xs\"]")
+	@FindBy(xpath="//*[@id=\"dynamic-form\"]/div/div[4]/div[2]/div/div[1]/button")
 	WebElement expense;
 	@FindBy(xpath="//select[@name=\"Expense[0][type_id]\"]")
 	WebElement adhoc;
@@ -62,7 +81,7 @@ public class CreateTimeSheet {
 	WebElement ex_pay;
 	@FindBy(name="Expense[0][bill]")
 	WebElement ex_bill;
-	@FindBy(xpath="//button[@class=\"pull-right add-item2 btn btn-success btn-xs\"]")
+	@FindBy(xpath="//*[@id=\"dynamic-form\"]/div/div[4]/div[3]/div/div[1]/button")
 	WebElement deduction;
 	@FindBy(xpath="//select[@name=\"Deduction[0][type]\"]")
 	WebElement ded_type;
@@ -80,7 +99,16 @@ public class CreateTimeSheet {
 		al.accept();
 	}
 	
-	public void createTS()
+	public WebElement selectRandomOption(String xPath)
+	{
+		int size = driver.findElements(By.xpath(xPath)).size();
+		int randomNum = ThreadLocalRandom.current().nextInt(1, size);
+		System.out.println(randomNum);
+		WebElement option = driver.findElement(By.xpath(xPath + "["+randomNum+"]"));
+		return option;
+	}
+	
+	public void createTS() throws AWTException
 	{
 		Select s=new Select(branch);
 		s.selectByIndex(1);
@@ -89,15 +117,38 @@ public class CreateTimeSheet {
 		Select s2=new Select(description);
 		s2.selectByValue("Support Worker");
 		number.sendKeys("232323");
-		Select s3=new Select(client);
-		s3.selectByIndex(1);
+		
+		WebDriverWait w=new WebDriverWait(driver,50);
+		w.until(ExpectedConditions.visibilityOf(client));
+        //Select s3=new Select(client);
+		//s3.selectByIndex(1);
+		client.click();
+
+		WebElement option = selectRandomOption("//ul[@class=\"select2-results__options\"]//li");
+		
+		option.click();
+		
+		
+	/*	Robot r=new Robot();
+		r.keyPress(KeyEvent.VK_CONTROL);
+		r.keyPress(KeyEvent.VK_ENTER);
+		r.keyRelease(KeyEvent.VK_CONTROL);
+		r.keyRelease(KeyEvent.VK_ENTER);*/
+		//clientOption.click();
+		
 	    date.click();
 	    weekendDate.click();
 	    Select c=new Select(category);
 		c.selectByValue("Contractor");
 		checkbox1.click();
-		Select s4=new Select(worker);
-		s4.selectByValue("2");
+		
+		WebDriverWait w1=new WebDriverWait(driver,30);
+		w1.until(ExpectedConditions.visibilityOf(worker));
+		worker.click();
+        WebElement worker_option = selectRandomOption("//ul[@class=\"select2-results__options\"]//li");
+		worker_option.click();
+		
+		
 		Select s5=new Select(type);
 		s5.selectByIndex(2);
 		PO.sendKeys("33434");
@@ -105,7 +156,7 @@ public class CreateTimeSheet {
 	}
 	
 	public void addRate() {
-		rate.click();
+		//rate.click();
 		Select de=new Select(rate_desc);
 		de.selectByIndex(1);
 		Select fr=new Select(frequency);
@@ -117,7 +168,12 @@ public class CreateTimeSheet {
 	}
 	
 	public void addExpense() {
-		expense.click();
+		WebDriverWait w1=new WebDriverWait(driver,30);
+		w1.until(ExpectedConditions.visibilityOf(expense));
+		Actions act=new Actions(driver);
+		act.moveToElement(expense).perform();
+		
+		
 		Select ad=new Select(adhoc);
 		ad.selectByIndex(1);
 		ex_unit.sendKeys("3");

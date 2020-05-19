@@ -7,8 +7,8 @@ import utility.BaseClass;
 
 public class TimeSheetTest extends LoginTest {
 	
-  @Test
-  public void f () {
+  @Test(priority=1)
+  public void second () {
 	  
 	  TimeSheet t;
 	  t=new TimeSheet(driver);

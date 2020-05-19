@@ -11,11 +11,11 @@ import utility.BaseClass;
 
 public class LoginTest extends BaseClass {
 	
-  @Test
-  public void main() {
+  @Test(priority=0)
+  public void first() {
 	  
 	  LoginPage l=new LoginPage(driver);
-	  l.login();	 
+	 l.login();	 
 	  
   }
 }

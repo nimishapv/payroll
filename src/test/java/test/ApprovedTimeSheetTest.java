@@ -6,13 +6,11 @@ import pageObject.ApprovedTimeSheet;
 import pageObject.TimeSheet;
 import utility.BaseClass;
 
-public class ApprovedTimeSheetTest extends LoginTest {
-  @Test 
-  public void f() {
+public class ApprovedTimeSheetTest extends TimeSheetTest {
+  @Test(priority=2)
+  public void t() {
 	  
-	  TimeSheet t;
-	  t=new TimeSheet(driver);
-	  t.loadPage();
+	  
 	  ApprovedTimeSheet a =new ApprovedTimeSheet(driver);
 	  a.approvedTSheet();
   }
