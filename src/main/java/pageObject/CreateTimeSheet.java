@@ -5,9 +5,11 @@ import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -71,6 +73,7 @@ public class CreateTimeSheet {
 	WebElement bill;
 	@FindBy(xpath="//input[@id=\"rate-0-awr\"]")
 	WebElement awr;
+	
 	@FindBy(xpath="//*[@id=\"dynamic-form\"]/div/div[4]/div[2]/div/div[1]/button")
 	WebElement expense;
 	@FindBy(xpath="//select[@name=\"Expense[0][type_id]\"]")
@@ -87,7 +90,7 @@ public class CreateTimeSheet {
 	WebElement ded_type;
 	@FindBy(name="Deduction[0][amount]")
 	WebElement ded_amt;
-	@FindBy(className="btn btn-success")
+	@FindBy(xpath="//div[@class=\"form-group\"]//button[@type=\"submit\"]")
 	WebElement save;
 	
 	public void createTSLink()
@@ -103,13 +106,14 @@ public class CreateTimeSheet {
 	{
 		int size = driver.findElements(By.xpath(xPath)).size();
 		int randomNum = ThreadLocalRandom.current().nextInt(1, size);
-		System.out.println(randomNum);
+	//	System.out.println(randomNum);
 		WebElement option = driver.findElement(By.xpath(xPath + "["+randomNum+"]"));
 		return option;
 	}
 	
 	public void createTS() throws AWTException
 	{
+		System.out.println(driver.getCurrentUrl());
 		Select s=new Select(branch);
 		s.selectByIndex(1);
 		Select s1=new Select(division);
@@ -155,38 +159,68 @@ public class CreateTimeSheet {
 		
 	}
 	
-	public void addRate() {
+	public void addRate() throws InterruptedException {
 		//rate.click();
 		Select de=new Select(rate_desc);
 		de.selectByIndex(1);
 		Select fr=new Select(frequency);
 		fr.selectByIndex(1);
 		unit.sendKeys("2");
+		Thread.sleep(3000);
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	//	pay.click();
 		pay.sendKeys("250");
+		Thread.sleep(4000);
+		//bill.click();
 		bill.sendKeys("2500");
+		Thread.sleep(3000);
 		awr.click();
 	}
 	
-	public void addExpense() {
+	public void addExpense() throws InterruptedException {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,1000)");
 		WebDriverWait w1=new WebDriverWait(driver,30);
 		w1.until(ExpectedConditions.visibilityOf(expense));
 		Actions act=new Actions(driver);
-		act.moveToElement(expense).perform();
+		act.moveToElement(expense).click().perform();
 		
-		
+		w1.until(ExpectedConditions.visibilityOf(adhoc));
 		Select ad=new Select(adhoc);
 		ad.selectByIndex(1);
 		ex_unit.sendKeys("3");
+		//driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+		Thread.sleep(4000);
 		ex_pay.sendKeys("500");
+		Thread.sleep(4000);
+		
 		ex_bill.sendKeys("600");
+		Thread.sleep(3000);
 	}
 	
 	public void addDeduction() {
-		deduction.click();
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,1000)");
+		WebDriverWait w1=new WebDriverWait(driver,30);
+		w1.until(ExpectedConditions.visibilityOf(deduction));
+		Actions act=new Actions(driver);
+		act.moveToElement(deduction).click().perform();
+		
+		//deduction.click();
 		Select d=new Select(ded_type);
 		d.selectByIndex(2);
 		ded_amt.sendKeys("300");
 		save.submit();
+		w1.until(ExpectedConditions.urlContains("view"));
+		System.out.println(driver.getCurrentUrl());
+	}
+	
+	public void testCreateTimeSheet() throws AWTException, InterruptedException {
+		createTSLink();
+		createTS();
+		addRate();
+		addExpense();
+		addDeduction();
 	}
 	
 	public CreateTimeSheet(WebDriver driver) {

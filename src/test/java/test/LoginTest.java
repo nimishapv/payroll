@@ -13,9 +13,7 @@ public class LoginTest extends BaseClass {
 	
   @Test(priority=0)
   public void first() {
-	  
-	  LoginPage l=new LoginPage(driver);
-	 l.login();	 
-	  
+		  LoginPage l=new LoginPage(driver);
+		  l.login();
   }
 }

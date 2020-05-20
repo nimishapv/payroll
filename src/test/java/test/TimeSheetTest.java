@@ -7,12 +7,15 @@ import utility.BaseClass;
 
 public class TimeSheetTest extends LoginTest {
 	
-  @Test(priority=1)
-  public void second () {
+  @Test
+  public void second () throws InterruptedException {
+	  
+	  System.out.println("Timesheet");
 	  
 	  TimeSheet t;
 	  t=new TimeSheet(driver);
 	  t.loadPage();
 	  t.buttonAlerts();
+	  //t.pendingTimeSheet();
   }
 }

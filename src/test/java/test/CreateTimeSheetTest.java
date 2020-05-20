@@ -7,16 +7,12 @@ import org.testng.annotations.Test;
 import pageObject.CreateTimeSheet;
 import utility.BaseClass;
 
-public class CreateTimeSheetTest extends ApprovedTimeSheetTest {
-  @Test(priority=3)
-  public void f() throws AWTException {
+public class CreateTimeSheetTest extends TimeSheetTest {
+  @Test
+  public void f() throws AWTException, InterruptedException {
 	 CreateTimeSheet c; 
 	 c=new CreateTimeSheet(driver);
-	 c.createTSLink();
-	 c.createTS();
-	 c.addRate();
-	 c.addExpense();
-	 c.addDeduction();
+	c.testCreateTimeSheet();
 	
 	  
   }

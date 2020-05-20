@@ -22,6 +22,7 @@ import org.testng.annotations.AfterClass;
 
 public class BaseClass {
 	public WebDriver driver;
+	public boolean isLoggedIn = false;
 	
 
  /* @DataProvider
@@ -46,7 +47,7 @@ public class BaseClass {
   @BeforeClass
   public void beforeClass() {
 	  
-	  System.setProperty("webdriver.chrome.driver","F:\\\\chromedriver_win32\\\\chromedriver.exe");
+	  System.setProperty("webdriver.chrome.driver","D:\\chromedriver_win32\\chromedriver.exe");
 	  driver=new ChromeDriver();
 	  driver.get("http://qabible.in/payrollapp/site/login");
 	  driver.manage().window().maximize();
