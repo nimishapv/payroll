@@ -1,21 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" ignored="0" total="5" passed="5">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="71134" started-at="2020-05-20T21:38:57 IST" finished-at="2020-05-20T21:40:08 IST">
+  <suite name="Suite" duration-ms="165616" started-at="2020-05-27T21:56:08 IST" finished-at="2020-05-27T21:58:53 IST">
     <groups>
     </groups>
-    <test name="FirstTest" duration-ms="71134" started-at="2020-05-20T21:38:57 IST" finished-at="2020-05-20T21:40:08 IST">
+    <test name="FirstTest" duration-ms="165616" started-at="2020-05-27T21:56:08 IST" finished-at="2020-05-27T21:58:53 IST">
       <class name="test.CompleteTest">
-        <test-method status="PASS" signature="beforeClass()[pri:0, instance:test.CompleteTest@bbd20a]" name="beforeClass" is-config="true" duration-ms="9459" started-at="2020-05-20T21:38:57 IST" finished-at="2020-05-20T21:39:06 IST">
+        <test-method status="PASS" signature="beforeClass()[pri:0, instance:test.CompleteTest@bbd20a]" name="beforeClass" is-config="true" duration-ms="11203" started-at="2020-05-27T21:56:08 IST" finished-at="2020-05-27T21:56:19 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method status="PASS" signature="main()[pri:1, instance:test.CompleteTest@bbd20a]" name="main" duration-ms="61605" started-at="2020-05-20T21:39:06 IST" finished-at="2020-05-20T21:40:08 IST">
+        <test-method status="PASS" signature="LoginPageTest()[pri:0, instance:test.CompleteTest@bbd20a]" name="LoginPageTest" duration-ms="4917" started-at="2020-05-27T21:56:19 IST" finished-at="2020-05-27T21:56:24 IST">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- main -->
-        <test-method status="PASS" signature="afterClass()[pri:0, instance:test.CompleteTest@bbd20a]" name="afterClass" is-config="true" duration-ms="0" started-at="2020-05-20T21:40:08 IST" finished-at="2020-05-20T21:40:08 IST">
+        </test-method> <!-- LoginPageTest -->
+        <test-method status="PASS" signature="TimeSheetTest()[pri:1, instance:test.CompleteTest@bbd20a]" name="TimeSheetTest" duration-ms="18499" started-at="2020-05-27T21:56:24 IST" finished-at="2020-05-27T21:56:43 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TimeSheetTest -->
+        <test-method status="PASS" signature="ApprovedTimeSheetTest()[pri:2, instance:test.CompleteTest@bbd20a]" name="ApprovedTimeSheetTest" duration-ms="4018" started-at="2020-05-27T21:56:43 IST" finished-at="2020-05-27T21:56:47 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ApprovedTimeSheetTest -->
+        <test-method status="PASS" signature="CreateTimeSheet()[pri:3, instance:test.CompleteTest@bbd20a]" name="CreateTimeSheet" duration-ms="54518" started-at="2020-05-27T21:56:47 IST" finished-at="2020-05-27T21:57:41 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CreateTimeSheet -->
+        <test-method status="PASS" signature="pendingTimeSheetTest()[pri:4, instance:test.CompleteTest@bbd20a]" name="pendingTimeSheetTest" duration-ms="72382" started-at="2020-05-27T21:57:41 IST" finished-at="2020-05-27T21:58:53 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- pendingTimeSheetTest -->
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:test.CompleteTest@bbd20a]" name="afterClass" is-config="true" duration-ms="0" started-at="2020-05-27T21:58:53 IST" finished-at="2020-05-27T21:58:53 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->

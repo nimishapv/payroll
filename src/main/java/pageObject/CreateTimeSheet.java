@@ -93,6 +93,8 @@ public class CreateTimeSheet {
 	@FindBy(xpath="//div[@class=\"form-group\"]//button[@type=\"submit\"]")
 	WebElement save;
 	
+	public String timesheet_id,newTimeSheetNo;
+	
 	public void createTSLink()
 	{
 		create.click();
@@ -120,7 +122,7 @@ public class CreateTimeSheet {
 		s1.selectByValue("1");
 		Select s2=new Select(description);
 		s2.selectByValue("Support Worker");
-		number.sendKeys("232323");
+		number.sendKeys("4777");
 		
 		WebDriverWait w=new WebDriverWait(driver,50);
 		w.until(ExpectedConditions.visibilityOf(client));
@@ -211,8 +213,26 @@ public class CreateTimeSheet {
 		d.selectByIndex(2);
 		ded_amt.sendKeys("300");
 		save.submit();
+		//WebDriverWait w1=new WebDriverWait(driver,30);
 		w1.until(ExpectedConditions.urlContains("view"));
 		System.out.println(driver.getCurrentUrl());
+		
+		/*w1.until(ExpectedConditions.urlContains("view"));
+		String url=driver.getCurrentUrl();
+		System.out.println(url);
+		 String[] arr = url.split("=", 0);  
+		 System.out.println(arr[1]);
+		  timesheet_id=arr[1];*/
+		  
+		  
+	}
+	
+	public String getTimeSheetNo() {
+		System.out.println("create timesheet url: "+driver.getCurrentUrl());
+		WebElement timeSheetNo=driver.findElement(By.xpath("//table[@id=\"w0\"]//tbody//tr//td[1]"));
+		   newTimeSheetNo=timeSheetNo.getText();
+		  System.out.println(newTimeSheetNo);
+		  return newTimeSheetNo;
 	}
 	
 	public void testCreateTimeSheet() throws AWTException, InterruptedException {
@@ -221,6 +241,7 @@ public class CreateTimeSheet {
 		addRate();
 		addExpense();
 		addDeduction();
+		//getTimeSheetNo();
 	}
 	
 	public CreateTimeSheet(WebDriver driver) {

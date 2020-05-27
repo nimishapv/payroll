@@ -3,13 +3,13 @@
 <suite name="Failed suite [Suite]">
   <test thread-count="5" name="FirstTest(failed)">
     <classes>
-      <class name="test.TimeSheetTest">
+      <class name="test.CompleteTest">
         <methods>
-          <include name="second"/>
           <include name="beforeClass"/>
+          <include name="CreateTimeSheet"/>
           <include name="afterClass"/>
         </methods>
-      </class> <!-- test.TimeSheetTest -->
+      </class> <!-- test.CompleteTest -->
     </classes>
   </test> <!-- FirstTest(failed) -->
 </suite> <!-- Failed suite [Suite] -->

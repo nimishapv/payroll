@@ -91,7 +91,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">5 methods,   5 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -102,7 +102,27 @@
                     <div class="method-list-content passed suite-Suite">
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="test.CompleteTest" hash-for-method="main">main</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="test.CompleteTest" hash-for-method="ApprovedTimeSheetTest">ApprovedTimeSheetTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="test.CompleteTest" hash-for-method="CreateTimeSheet">CreateTimeSheet</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="test.CompleteTest" hash-for-method="LoginPageTest">LoginPageTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="test.CompleteTest" hash-for-method="TimeSheetTest">TimeSheetTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="test.CompleteTest" hash-for-method="pendingTimeSheetTest">pendingTimeSheetTest</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Suite -->
@@ -125,9 +145,37 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="main">
-                  </a> <!-- main -->
-                  <span class="method-name">main</span>
+                  <a name="ApprovedTimeSheetTest">
+                  </a> <!-- ApprovedTimeSheetTest -->
+                  <span class="method-name">ApprovedTimeSheetTest</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="CreateTimeSheet">
+                  </a> <!-- CreateTimeSheet -->
+                  <span class="method-name">CreateTimeSheet</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="LoginPageTest">
+                  </a> <!-- LoginPageTest -->
+                  <span class="method-name">LoginPageTest</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="TimeSheetTest">
+                  </a> <!-- TimeSheetTest -->
+                  <span class="method-name">TimeSheetTest</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="pendingTimeSheetTest">
+                  </a> <!-- pendingTimeSheetTest -->
+                  <span class="method-name">pendingTimeSheetTest</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -184,16 +232,32 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(1);
+data.addRows(5);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'main')
+data.setCell(0, 1, 'pendingTimeSheetTest')
 data.setCell(0, 2, 'test.CompleteTest')
-data.setCell(0, 3, 61605);
+data.setCell(0, 3, 72382);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'CreateTimeSheet')
+data.setCell(1, 2, 'test.CompleteTest')
+data.setCell(1, 3, 54518);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'TimeSheetTest')
+data.setCell(2, 2, 'test.CompleteTest')
+data.setCell(2, 3, 18499);
+data.setCell(3, 0, 3)
+data.setCell(3, 1, 'LoginPageTest')
+data.setCell(3, 2, 'test.CompleteTest')
+data.setCell(3, 3, 4917);
+data.setCell(4, 0, 4)
+data.setCell(4, 1, 'ApprovedTimeSheetTest')
+data.setCell(4, 2, 'test.CompleteTest')
+data.setCell(4, 3, 4018);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 1 minutes</span>
+              <span class="suite-total-time">Total running time: 2 minutes</span>
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->
@@ -225,12 +289,28 @@ return data;
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
-                <span class="method-name">main</span>
-                <span class="method-start">9490 ms</span>
+                <span class="method-name">LoginPageTest</span>
+                <span class="method-start">11234 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">TimeSheetTest</span>
+                <span class="method-start">16159 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">ApprovedTimeSheetTest</span>
+                <span class="method-start">34662 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">CreateTimeSheet</span>
+                <span class="method-start">38683 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">pendingTimeSheetTest</span>
+                <span class="method-start">93203 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">afterClass</span>
-                <span class="method-start">71101 ms</span>
+                <span class="method-start">165585 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

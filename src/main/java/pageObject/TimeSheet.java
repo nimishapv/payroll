@@ -79,66 +79,7 @@ public class TimeSheet {
 		//Assert.assertFalse(invoice.isEnabled());
 	}
 	
-	public void pendingTimeSheet() throws InterruptedException {
-		
-		int size=driver.findElements(By.xpath("//table//tbody//tr")).size();
-		System.out.println("Size of the table: "+size);
-		
-		List <WebElement> timeSheetNoElement=driver.findElements(By.xpath("//table//tbody//tr//td[2]"));
-		
-		List <String> timeSheetNoList= new ArrayList<String>();
-		
-		for (WebElement timeSheetNoElements : timeSheetNoElement) {
-			timeSheetNoList.add(timeSheetNoElements.getText());
-		}
-		
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("window.scrollBy(0,2000)");
-		
-		//System.out.println(timeSheetNoList);
-		
-		String nextButtonClassName=driver.findElement(By.xpath("//li[@class=\"next\"]")).getAttribute("class");
-		System.out.println(nextButtonClassName);
-		
-		while(!nextButtonClassName.contains("disabled")) {
-			
-			WebDriverWait w=new WebDriverWait(driver,30);
-		
-			WebElement nextButton = driver.findElement(By.xpath("//li[@class=\"next\"]//a"));
-		
-			w.until(ExpectedConditions.visibilityOf(nextButton));
-			nextButton.click();
-			
-			Thread.sleep(5000);
-			
-			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			System.out.println(driver.getCurrentUrl());
-			js.executeScript("window.scrollBy(0,2000)");
-			timeSheetNoElement=driver.findElements(By.xpath("//table//tbody//tr//td[2]"));
-		
-			
-			for (WebElement timeSheetNoElements : timeSheetNoElement) {
-				timeSheetNoList.add(timeSheetNoElements.getText());
-			}
-			WebDriverWait w1=new WebDriverWait(driver,30);
-			w1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[contains(@class,'next')]")));
-			nextButtonClassName=driver.findElement(By.xpath("//li[contains(@class,'next')]")).getAttribute("class");
-			System.out.println(nextButtonClassName);
-		}
 	
-		
-		for (String timeSheetNoLists:timeSheetNoList) {
-			System.out.println(timeSheetNoLists);
-		}
-		
-		boolean isContains=timeSheetNoList.contains("345678");
-		
-		if(isContains) {
-			driver.findElement(By.xpath("//tr[@data-key=\"9436\"]//td//input")).click();
-			js.executeScript("window.scrollBy(0,-1500)");
-			driver.findElement(By.xpath("/html/body/section/div/div/div[3]/form/button")).click();
-		}
-	}
 	
 	public void testPage() {
 		loadPage();
